@@ -17,7 +17,6 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
   	this.user = {
   		username: '',
-  		email: '',
   		password: ''
   	}
   }
@@ -26,11 +25,11 @@ export class UsersComponent implements OnInit {
   login(): void {
   	this.userService.login(
   		{ 'username': this.user.username, 'password': this.user.password }
-  	);
+  	).subscribe(token => this.userService.token = token)
   }
 
   logout(): void {
-  	this.userService.logout()
+  	this.userService.logout();
   }
 
 }
