@@ -80,7 +80,6 @@ class User(AbstractBaseUser):
 		_('email address'),
 		unique=True,
 		max_length=255,
-		validators=[clean_email],
 		error_messages={
 			'unique': _("A user with that email address already exists."),
 		},
@@ -92,7 +91,7 @@ class User(AbstractBaseUser):
 	)
 	is_active = models.BooleanField(
 		_('active'),
-		default=False,
+		default=True,
 		help_text=_(
 			'Designates whether this user should be treated as active. '
 			'Unselect this instead of deleting accounts.'
