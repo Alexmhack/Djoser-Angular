@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 import { Token } from '../shared/token';
 import { User } from '../shared/user';
@@ -14,17 +15,28 @@ export class UserService {
 
   private url = 'http://127.0.0.1:8000';
 
+  private csrfToken = this.cookieService.get('csrftoken')
+
   private httpOptions = {
-  		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  	headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': this.csrfToken
+      }
+    )
   };
 
   public token: Token;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService
+  ) { }
 
   // login method using djoser endpoint
   login(user: User): Observable<Token> {
   	const loginUrl = this.url + '/login/';
+    console.log(this.cookieService.get('csrftoken'))
 
   	return this.http.post<Token>(loginUrl, JSON.stringify(user), this.httpOptions)
   		.pipe(

@@ -46,6 +46,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
+    { path: '', pathMatch: 'full', redirectTo: '/login' },
     { path: 'login', component: _users_users_component__WEBPACK_IMPORTED_MODULE_2__["UsersComponent"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -236,6 +237,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -249,17 +251,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UserService = /** @class */ (function () {
-    function UserService(http) {
+    function UserService(http, cookieService) {
         this.http = http;
+        this.cookieService = cookieService;
         this.url = 'http://127.0.0.1:8000';
+        this.csrfToken = this.cookieService.get('csrftoken');
         this.httpOptions = {
-            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.csrfToken
+            })
         };
     }
     // login method using djoser endpoint
     UserService.prototype.login = function (user) {
         var loginUrl = this.url + '/login/';
+        console.log(this.cookieService.get('csrftoken'));
         return this.http.post(loginUrl, JSON.stringify(user), this.httpOptions)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError("login error for Username=" + user.username)));
     };
@@ -296,7 +305,8 @@ var UserService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
+            ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__["CookieService"]])
     ], UserService);
     return UserService;
 }());
