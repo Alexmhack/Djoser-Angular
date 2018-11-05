@@ -3,25 +3,19 @@
   <div class="col-sm-4">
     <label>Username:</label><br />
     <input type="text" name="login-username" [(ngModel)]="user.username">
-    <span *ngFor="let error of userService.errors.username"><br />
-    {{ error }}</span>
+    <!-- <span *ngFor="let error of userService.errors.username"><br /> -->
+    <!-- {{ error }}</span> -->
   </div>
   <div class="col-sm-4">
     <label>Password:</label><br />
     <input type="password" name="login-password" [(ngModel)]="user.password">
-    <span *ngFor="let error of userService.errors.password"><br />
-    {{ error }}</span>
+    <!-- <span *ngFor="let error of userService.errors.password"><br /> -->
+    <!-- {{ error }}</span> -->
   </div>
   <div class="col-sm-4">
     <button (click)="login()" class="btn btn-primary">Log In</button>
   </div>
   <div class="col-sm-12">
-    <span *ngFor="let error of userService.errors.non_field_errors">{{ error }}<br /></span>
-  </div>
-</div>
-<div class="row" *ngIf="userService.token">
-  <div class="col-sm-12">You are logged in as {{ userService.username }}.<br />
-    Token Expires: {{ userService.tokenExpires }}<br />
-    <button (click)="logout()" class="btn btn-primary">Log Out</button>
+    <!-- <span *ngFor="let error of userService.errors.non_field_errors">{{ error }}<br /></span> -->
   </div>
 </div>

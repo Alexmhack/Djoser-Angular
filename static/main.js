@@ -135,11 +135,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./users/users.component */ "./src/app/users/users.component.ts");
-/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
-/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./core/core.module */ "./src/app/core/core.module.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _users_users_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./users/users.component */ "./src/app/users/users.component.ts");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
+/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./core/core.module */ "./src/app/core/core.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -154,24 +155,26 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _users_users_component__WEBPACK_IMPORTED_MODULE_5__["UsersComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
+                _users_users_component__WEBPACK_IMPORTED_MODULE_6__["UsersComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-                _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
-                _core_core_module__WEBPACK_IMPORTED_MODULE_7__["CoreModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_7__["SharedModule"],
+                _core_core_module__WEBPACK_IMPORTED_MODULE_8__["CoreModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -347,7 +350,7 @@ var SharedModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Log In</h2>\n<div class=\"row\" *ngIf=\"!userService.token\">\n  <div class=\"col-sm-4\">\n    <label>Username:</label><br />\n    <input type=\"text\" name=\"login-username\" [(ngModel)]=\"user.username\">\n    <span *ngFor=\"let error of userService.errors.username\"><br />\n    {{ error }}</span>\n  </div>\n  <div class=\"col-sm-4\">\n    <label>Password:</label><br />\n    <input type=\"password\" name=\"login-password\" [(ngModel)]=\"user.password\">\n    <span *ngFor=\"let error of userService.errors.password\"><br />\n    {{ error }}</span>\n  </div>\n  <div class=\"col-sm-4\">\n    <button (click)=\"login()\" class=\"btn btn-primary\">Log In</button>\n  </div>\n  <div class=\"col-sm-12\">\n    <span *ngFor=\"let error of userService.errors.non_field_errors\">{{ error }}<br /></span>\n  </div>\n</div>\n<div class=\"row\" *ngIf=\"userService.token\">\n  <div class=\"col-sm-12\">You are logged in as {{ userService.username }}.<br />\n    Token Expires: {{ userService.tokenExpires }}<br />\n    <button (click)=\"logout()\" class=\"btn btn-primary\">Log Out</button>\n  </div>\n</div>\n"
+module.exports = "<h2>Log In</h2>\n<div class=\"row\" *ngIf=\"!userService.token\">\n  <div class=\"col-sm-4\">\n    <label>Username:</label><br />\n    <input type=\"text\" name=\"login-username\" [(ngModel)]=\"user.username\">\n    <!-- <span *ngFor=\"let error of userService.errors.username\"><br /> -->\n    <!-- {{ error }}</span> -->\n  </div>\n  <div class=\"col-sm-4\">\n    <label>Password:</label><br />\n    <input type=\"password\" name=\"login-password\" [(ngModel)]=\"user.password\">\n    <!-- <span *ngFor=\"let error of userService.errors.password\"><br /> -->\n    <!-- {{ error }}</span> -->\n  </div>\n  <div class=\"col-sm-4\">\n    <button (click)=\"login()\" class=\"btn btn-primary\">Log In</button>\n  </div>\n  <div class=\"col-sm-12\">\n    <!-- <span *ngFor=\"let error of userService.errors.non_field_errors\">{{ error }}<br /></span> -->\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -397,7 +400,7 @@ var UsersComponent = /** @class */ (function () {
     };
     UsersComponent.prototype.login = function () {
         var _this = this;
-        this.userService.login({ 'username': this.user.username, 'password': this.user.password }).subscribe(function (token) { return _this.userService.token = token; });
+        this.userService.login({ 'username': this.user.username, 'password': this.user.password }).subscribe(function (token) { return _this.userService.token = token; }, function (err) { console.log(err); });
     };
     UsersComponent.prototype.logout = function () {
         this.userService.logout();

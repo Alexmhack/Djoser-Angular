@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit {
   login(): void {
   	this.userService.login(
   		{ 'username': this.user.username, 'password': this.user.password }
-  	).subscribe(token => this.userService.token = token)
+  	).subscribe(token => this.userService.token = token, err => { console.log(err) });
   }
 
   logout(): void {
