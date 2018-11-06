@@ -54,3 +54,5 @@ Django backend authentication using Djoser with Angular frontend
 	cd frontend
 	ng serve -o
 	```
+
+### Project is under construction.
